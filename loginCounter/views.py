@@ -3,7 +3,7 @@ from django.utils import simplejson as json
 from django.views.decorators.csrf import csrf_exempt
 from django.forms.models import model_to_dict
 from loginCounter.models import Users
-import loginCounter
+from loginCounter.tests import UsersTestCase
 import StringIO
 import unittest
 
@@ -75,7 +75,7 @@ def resetFixture(request):
 def unitTests(request):
 
     buffer = StringIO.StringIO()
-    suite = unittest.TestLoader().loadTestsFromTestCase(tests.UsersTestCase)
+    suite = unittest.TestLoader().loadTestsFromTestCase(UsersTestCase)
     result = unittest.TextTestRunner(stream = buffer, verbosity = 2).run(suite)
 
     rv = {"totalTests": result.testsRun, "nrFailed": len(result.failures), "output": buffer.getvalue()}
