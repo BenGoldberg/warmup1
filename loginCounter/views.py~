@@ -71,8 +71,10 @@ def resetFixture(request):
 @csrf_exempt
 def unitTests(request):
 
-    Users.objects.all().delete()
-    response_data = {'errCode': SUCCESS}
+    buffer = StringIO.StringIO()
+    suite = unittest.TestLoader().loadTestsFromTestCase(YourPackage.YourTestSuiteClass)
+    result = unittest.TextTestRunner(stream = buffer, verbosity = 2).run(suite)
 
-    return HttpResponse(json.dumps(response_data), content_type="application/json")
+    rv = {"totalTests": result.testsRun, "nrFailed": len(result.failures), "output": buffer.getvalue()}
+    return HttpResponse(json.dumps(rv), content_type = "application/json")
 
