@@ -74,7 +74,7 @@ def resetFixture(request):
 def unitTests(request):
 
     buffer = StringIO.StringIO()
-    suite = unittest.TestLoader().loadTestsFromTestCase(YourPackage.YourTestSuiteClass)
+    suite = unittest.TestLoader().loadTestsFromTestCase(loginCounter.tests)
     result = unittest.TextTestRunner(stream = buffer, verbosity = 2).run(suite)
 
     rv = {"totalTests": result.testsRun, "nrFailed": len(result.failures), "output": buffer.getvalue()}
