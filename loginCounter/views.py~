@@ -3,6 +3,7 @@ from django.utils import simplejson as json
 from django.views.decorators.csrf import csrf_exempt
 from django.forms.models import model_to_dict
 from loginCounter.models import Users
+import StringIO
 
 SUCCESS               =   1  # : a success
 ERR_BAD_CREDENTIALS   =  -1  # : (for login only) cannot find the user/password pair in the database
