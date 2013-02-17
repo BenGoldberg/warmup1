@@ -1,7 +1,7 @@
 from django.utils import unittest
 from loginCounter.models import Users
 from django.test.client import Client
-import simplejson as json
+from django.utils import simplejson as json
 
 SUCCESS               =   1  # : a success
 ERR_BAD_CREDENTIALS   =  -1  # : (for login only) cannot find the user/password pair in the database

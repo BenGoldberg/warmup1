@@ -115,5 +115,11 @@ class UsersTestCase(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.content, correct_response)
 
+        json_string = '{"user": "john", "password": "secret"}'
+        correct_response = '{"count": 2, "errCode": 1}'
+        response = self.c.post('/users/login', json_string, content_type="application/json")
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.content, correct_response)
+
         self.c.post('/TESTAPI/resetFixture')
 
