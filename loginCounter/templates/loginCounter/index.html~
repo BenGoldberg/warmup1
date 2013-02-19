@@ -3,7 +3,8 @@
 <html>
 
 <head>
-    <title>Login Page</title>
+    <title>Warmup Project</title>
+    <link rel="stylesheet" href="static/css/index.css">
     <script src="static/js/jquery-1.9.1.min.js"></script>
 </head>
 
