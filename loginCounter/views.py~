@@ -16,11 +16,8 @@ ERR_BAD_PASSWORD      =  -4  # : (for add only) invalid password (longer than 12
 
 @csrf_exempt
 def index(request):
-    template = loader.get_template('polls/index.html')
-    context = Context({
-        'latest_poll_list': latest_poll_list,
-    })
-    return HttpResponse(template.render(context))
+    template = loader.get_template('loginCounter/index.html')
+    return HttpResponse(template.render())
 
 @csrf_exempt
 def login(request):
