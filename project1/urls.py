@@ -5,6 +5,7 @@ from django.conf.urls import patterns, include, url
 # admin.autodiscover()
 
 urlpatterns = patterns('',
+    url(r'^$', 'loginCounter.views.index', name='index'),
     url(r'^users/login', 'loginCounter.views.login', name='login'),
     url(r'^users/add', 'loginCounter.views.add', name='add'),
     url(r'^TESTAPI/resetFixture', 'loginCounter.views.resetFixture', name='resetFixture'),

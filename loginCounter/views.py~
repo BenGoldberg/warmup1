@@ -3,7 +3,8 @@ from django.utils import simplejson as json
 from django.views.decorators.csrf import csrf_exempt
 from django.forms.models import model_to_dict
 from loginCounter.models import Users
-import loginCounter
+from loginCounter.tests import UsersTestCase
+from django.template import Context, loader
 import StringIO
 import unittest
 
@@ -12,6 +13,14 @@ ERR_BAD_CREDENTIALS   =  -1  # : (for login only) cannot find the user/password 
 ERR_USER_EXISTS       =  -2  # : (for add only) trying to add a user that already exists
 ERR_BAD_USERNAME      =  -3  # : (for add only) invalid user name (empty string and longer than 128 characters is invalid)
 ERR_BAD_PASSWORD      =  -4  # : (for add only) invalid password (longer than 128 characters is invalid)
+
+@csrf_exempt
+def index(request):
+    template = loader.get_template('polls/index.html')
+    context = Context({
+        'latest_poll_list': latest_poll_list,
+    })
+    return HttpResponse(template.render(context))
 
 @csrf_exempt
 def login(request):
@@ -75,7 +84,7 @@ def resetFixture(request):
 def unitTests(request):
 
     buffer = StringIO.StringIO()
-    suite = unittest.TestLoader().loadTestsFromTestCase(tests.UsersTestCase)
+    suite = unittest.TestLoader().loadTestsFromTestCase(UsersTestCase)
     result = unittest.TextTestRunner(stream = buffer, verbosity = 2).run(suite)
 
     rv = {"totalTests": result.testsRun, "nrFailed": len(result.failures), "output": buffer.getvalue()}

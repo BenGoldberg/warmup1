@@ -4,6 +4,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.forms.models import model_to_dict
 from loginCounter.models import Users
 from loginCounter.tests import UsersTestCase
+from django.template import Context, loader
 import StringIO
 import unittest
 
@@ -12,6 +13,11 @@ ERR_BAD_CREDENTIALS   =  -1  # : (for login only) cannot find the user/password 
 ERR_USER_EXISTS       =  -2  # : (for add only) trying to add a user that already exists
 ERR_BAD_USERNAME      =  -3  # : (for add only) invalid user name (empty string and longer than 128 characters is invalid)
 ERR_BAD_PASSWORD      =  -4  # : (for add only) invalid password (longer than 128 characters is invalid)
+
+@csrf_exempt
+def index(request):
+    template = loader.get_template('loginCounter/index.html')
+    return HttpResponse(template.render())
 
 @csrf_exempt
 def login(request):
