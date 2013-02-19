@@ -12,15 +12,15 @@
 
 <div id="login-page" class="box">
     <div id="message" class="message"></div>
-    <div class="form">
-        <form>
+    <form>
+        <div id="input">
             Username: <input id="user" type="text" name="user"><br>
             Password: <input id="password" type="password" name="password"><br>
-            <input id="login-button" type="submit" value="Login">
-            <input id="add-user-button" type="submit" value="Add User">
-            <input id="logout-button" type="submit" value="Logout">
-        </form>
-    </div>
+        </div>
+        <input id="login-button" type="submit" value="Login">
+        <input id="add-user-button" type="submit" value="Add User">
+        <input id="logout-button" type="submit" value="Logout">
+    </form>
 </div>
 
 <script>
@@ -43,8 +43,7 @@ function show_login_page(message) {
         message = "Please enter your credentials below";
     }
 
-    $('#user').show();
-    $('#password').show();
+    $('#input').show();
     $('#login-button').show();
     $('#add-user-button').show();
     $('#logout-button').hide();
@@ -56,8 +55,7 @@ function show_login_page(message) {
 // Welcome page
 function show_welcome_page(user, count) {
 
-    $('#user').hide();
-    $('#password').hide();
+    $('#input').hide();
     $('#login-button').hide();
     $('#add-user-button').hide();
     $('#logout-button').show();
