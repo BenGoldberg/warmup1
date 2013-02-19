@@ -7,7 +7,7 @@ body {
     height: 350px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 100px;
+    margin-top: 70px;
     border: thin black solid;
     border-radius: 15px;
     background-color: rgb(243,243,243);
@@ -16,7 +16,13 @@ body {
 .message {
     margin: 10px 20px 10px 20px;
     padding: 10px;
+    text-align: center;
+    border: thin black solid;
+}
+
+.form {
+    padding: 10px;
     margin-right: auto;
     margin-left: auto;
-    border: thin black solid;
+    margin-top: 20px;
 }
