@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from django.utils import simplejson as json
 from django.views.decorators.csrf import csrf_exempt
 from django.forms.models import model_to_dict
+from django.shortcuts import render_to_response
 from loginCounter.models import Users
 from loginCounter.tests import UsersTestCase
 from django.template import Context, loader
