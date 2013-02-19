@@ -40,6 +40,11 @@ function show_login_page(message) {
         message = "Please enter your credentials below";
     }
 
+    $('#user').show();
+    $('#password').show();
+    $('#login-button').show();
+    $('#add-user-button').show();
+    $('#logout-button').hide();
     $('#user').val("");
     $('#password').val("");
     $('#message').html(message);
