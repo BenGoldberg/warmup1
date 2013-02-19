@@ -4,7 +4,7 @@
 
 <head>
     <title>Login Page</title>
-    <script src="js/jquery-1.9.1.min.js"></script>
+    <script src="{{ STATIC_URL }}js/jquery-1.9.1.min.js"></script>
 </head>
 
 <body>
@@ -72,7 +72,7 @@ $('#login-button').click(function() {
 
     var user = $('#user').val();
     var password = $('#password').val();
-    json_request("/users/login", {user: username, password: password}, function(data) { return handle_login_response(data, user); }, function(err) { alert('error occurred on request'); });
+    json_request("/users/login", {user: user, password: password}, function(data) { return handle_login_response(data, user); }, function(jqXHR, textStatus, errorThrown) { alert(jqXHR.status); });
 
     return false;
 });
@@ -81,7 +81,7 @@ $('#add-user-button').click(function() {
 
     var user = $('#user').val();
     var password = $('#password').val();
-    json_request("/users/add", { user: username, password: password }, function(data) { return handle_add_user_response(data, user); }, function(err) {alert('error occurred on request'); });
+    json_request("/users/add", { user: user, password: password }, function(data) { return handle_add_user_response(data, user); }, function(jqXHR, textStatus, errorThrown) { alert(jqXHR.status); });
 
     return false;
 });
